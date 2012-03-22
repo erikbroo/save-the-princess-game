@@ -1,17 +1,124 @@
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
+import QtQuick 1.0
 
 Rectangle {
-    width: 360
-    height: 360
-    Text {
-        text: qsTr("Hello World")
-        anchors.centerIn: parent
-    }
-    MouseArea {
+    id: rectangle1
+    width: 800
+    height: 600
+
+    Image {
+        id: image1
         anchors.fill: parent
-        onClicked: {
-            Qt.quit();
+        source: "graphics/crow.png"
+    }
+
+    Text {
+        id: play
+        color: "#f7eca4"
+        text: qsTr("Play")
+        anchors.right: parent.right
+        anchors.rightMargin: 352
+        anchors.left: parent.left
+        anchors.leftMargin: 342
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 327
+        anchors.top: parent.top
+        anchors.topMargin: 234
+        font.bold: true
+        style: Text.Sunken
+        font.family: "MV Boli"
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
+        font.pixelSize: 35
+
+        MouseArea {
+            id: mouse_area_play
+            hoverEnabled: true
+            anchors.fill: parent
+
+            onHoveredChanged: if(mouse_area_play.containsMouse)
+                              {
+                                  play.style = Text.Raised;
+                              }
+                              else
+                              {
+                                  play.style = Text.Sunken;
+                              }
+        }
+    }
+
+    Text {
+        id: close
+        color: "#f56c58"
+        text: qsTr("x")
+        anchors.right: parent.right
+        anchors.rightMargin: 16
+        anchors.left: parent.left
+        anchors.leftMargin: 743
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 534
+        anchors.top: parent.top
+        anchors.topMargin: 11
+        styleColor: "#000000"
+        font.bold: true
+        style: Text.Sunken
+        font.family: "MV Boli"
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
+        font.pixelSize: 73
+
+        MouseArea {
+            id: mouse_area_close
+            hoverEnabled: true
+            anchors.fill: parent
+
+            onHoveredChanged: if(mouse_area_close.containsMouse)
+                              {
+                                  close.style = Text.Raised;
+                              }
+                              else
+                              {
+                                  close.style = Text.Sunken;
+                              }
+
+
+            onClicked: Qt.quit();
+        }
+    }
+
+    Text {
+        id: about
+        color: "#00c5ff"
+        text: qsTr("?")
+        anchors.right: parent.right
+        anchors.rightMargin: 16
+        anchors.left: parent.left
+        anchors.leftMargin: 743
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 23
+        anchors.top: parent.top
+        anchors.topMargin: 522
+        font.pixelSize: 73
+        style: Text.Sunken
+        font.family: "MV Boli"
+        font.bold: true
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+
+        MouseArea {
+            id: mouse_area_about
+            hoverEnabled: true
+            anchors.fill: parent
+
+            onHoveredChanged: if(mouse_area_about.containsMouse)
+                              {
+                                  about.style = Text.Raised;
+                              }
+                              else
+                              {
+                                  about.style = Text.Sunken;
+                              }
         }
     }
 }

@@ -53,3 +53,5 @@ HEADERS += \
     code/foe.h \
     code/holer.h \
     code/bonus.h
+
+OTHER_FILES +=
