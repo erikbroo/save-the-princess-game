@@ -1,6 +1,9 @@
 #ifndef HOLER_H
 #define HOLER_H
 
+#include <QObject>
+#include "gameobject.h"
+
 class Holer : public GameObject
 {
     Q_OBJECT

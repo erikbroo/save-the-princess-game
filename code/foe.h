@@ -1,6 +1,9 @@
 #ifndef FOE_H
 #define FOE_H
 
+#include <QObject>
+#include "gameobject.h"
+
 class Foe : public GameObject
 {
     Q_OBJECT
