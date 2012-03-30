@@ -30,7 +30,7 @@ private:
     Ui::MainWindow *ui;
     void setUpItemList();
     QVector<LevelItem*> itemsList;
-    QString currentFilename;
+    QString currentLevelFilename;
 
     void loadLevelItems();
     void writeLevelItems();
@@ -43,6 +43,9 @@ private:
     bool isDigit(char symbol);
 
     void setColumnWidth();
+
+    bool checkIfHeroWasPlaced();
+    bool checkIfPrincessWasPlaced();
 };
 
 #endif // MAINWINDOW_H
