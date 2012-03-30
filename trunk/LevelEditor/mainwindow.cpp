@@ -3,6 +3,7 @@
 
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QList>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -157,6 +158,30 @@ void MainWindow::setColumnWidth()
     for(int i = 0; i < ui->itemsTable->columnCount(); i++) ui->itemsTable->setColumnWidth(i, 32);
 }
 
+bool MainWindow::checkIfItemPlaced(QString itemName) {
+    for(int row = 0; row < ui->itemsTable->rowCount(); row++)
+    {
+        for(int column = 0; column < ui->itemsTable->columnCount(); column++)
+        {
+            QTableWidgetItem* item = ui->itemsTable->item(row,column);
+            if (QString::compare(item->text(),itemName) == 0) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+bool MainWindow::checkIfHeroWasPlaced()
+{
+    return checkIfItemPlaced("Hero");
+}
+
+bool MainWindow::checkIfPrincessWasPlaced()
+{
+    return checkIfItemPlaced("Princess");
+}
+
 void MainWindow::on_itemsTable_cellClicked(int row, int column)
 {
     QTableWidgetItem* item = ui->itemsTable->item(row,column);
@@ -164,6 +189,20 @@ void MainWindow::on_itemsTable_cellClicked(int row, int column)
     if (ui->listItems->selectedItems().isEmpty() == false &&
         ui->insertModeBox->isChecked())
     {
+        QString itemName = ui->listItems->currentItem()->text();
+
+        if (QString::compare(itemName,"Hero") == 0) {
+            if (checkIfHeroWasPlaced())
+            {
+                return;
+            }
+        }
+
+        if (QString::compare(itemName,"Princess") == 0) {
+            if (checkIfPrincessWasPlaced()){
+                return;
+            }
+        }
         item->setText(ui->listItems->currentItem()->text());
         item->setIcon(ui->listItems->currentItem()->icon());
     }
