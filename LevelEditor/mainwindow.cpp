@@ -37,7 +37,7 @@ void MainWindow::on_newButton_clicked()
 
    }
 
-   currentFilename = QFileDialog::getSaveFileName(this,"Save File",0,"*.spg");
+   currentLevelFilename = QFileDialog::getSaveFileName(this,"Save File",0,"*.spg");
 
 }
 
@@ -50,6 +50,9 @@ void MainWindow::setUpItemList()
     itemsList.append(new LevelItem(i++,QIcon("Water.png"),"Water"));
     itemsList.append(new LevelItem(i++,QIcon("StoneWall.png"),"Stone wall"));
     itemsList.append(new LevelItem(i++,QIcon("Board.png"),"Board"));
+    itemsList.append(new LevelItem(i++,QIcon("Hero.png"),"Hero"));
+    itemsList.append(new LevelItem(i++,QIcon("Princess.png"),"Princess"));
+    itemsList.append(new LevelItem(i++,QIcon("Enemy1.png"),"Enemy1"));
 
     for(int j = 0; j < itemsList.size(); j++)
     {
@@ -61,7 +64,7 @@ void MainWindow::setUpItemList()
 
 void MainWindow::writeLevelItems()
 {
-    QFile file(currentFilename);
+    QFile file(currentLevelFilename);
 
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
@@ -97,7 +100,7 @@ void MainWindow::writeLevelItems()
 void MainWindow::showFileIOErorrMessage(QString info)
 {
     QMessageBox msgBox;
-    msgBox.setText(info + "\'" + currentFilename + "\'.");
+    msgBox.setText(info + "\'" + currentLevelFilename + "\'.");
 }
 
 int MainWindow::getItemId(QString itemName)
@@ -174,11 +177,11 @@ void MainWindow::on_saveButton_clicked()
 
 void MainWindow::on_loadButton_clicked()
 {
-    currentFilename = QFileDialog::getOpenFileName(this,"Load file",0,"*.spg");
+    currentLevelFilename = QFileDialog::getOpenFileName(this,"Load file",0,"*.spg");
 
     QVector<int> idList;
 
-    QFile file(currentFilename);
+    QFile file(currentLevelFilename);
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
