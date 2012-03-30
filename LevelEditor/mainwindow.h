@@ -44,6 +44,7 @@ private:
 
     void setColumnWidth();
 
+    bool checkIfItemPlaced(QString itemName);
     bool checkIfHeroWasPlaced();
     bool checkIfPrincessWasPlaced();
 };
