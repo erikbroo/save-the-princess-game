@@ -11,6 +11,15 @@ Rectangle {
         id: image1
         anchors.fill: parent
         source: "graphics/crow.png"
+
+        Text {
+            id: text1
+            x: 246
+            y: 146
+            text: qsTr("text")
+            font.pixelSize: 12
+            opacity: 0
+        }
     }
 
     Text {
@@ -121,4 +130,46 @@ Rectangle {
                               }
         }
     }
+    states: [
+        State {
+            name: "About screen"
+
+            PropertyChanges {
+                target: image1
+                smooth: true
+                clip: false
+                opacity: 0.400
+            }
+
+            PropertyChanges {
+                target: mouse_area_close
+                enabled: true
+            }
+
+            PropertyChanges {
+                target: mouse_area_play
+                opacity: 1
+                enabled: false
+            }
+
+            PropertyChanges {
+                target: mouse_area_about
+                enabled: true
+            }
+
+            PropertyChanges {
+                target: play
+                text: "Play"
+                opacity: 0.400
+            }
+
+            PropertyChanges {
+                target: text1
+                width: 288
+                height: 38
+                text: "text"
+                opacity: 1
+            }
+        }
+    ]
 }
