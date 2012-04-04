@@ -7,19 +7,137 @@ Rectangle {
     width: 800
     height: 600
 
+    Text {
+        id: text1
+        x: 263
+        y: 52
+        width: 275
+        height: 40
+        color: "#ffe54d"
+        text: "Lead Programming"
+        smooth: false
+        style: "Sunken"
+        verticalAlignment: "AlignVCenter"
+        horizontalAlignment: "AlignHCenter"
+        font.pixelSize: 30
+        font.family: "MV Boli"
+        opacity: 0
+    }
+
+    Text {
+        id: text2
+        x: 287
+        y: 98
+        color: "#ffe54d"
+        text: qsTr("Yuri Shakalov")
+        font.strikeout: false
+        font.italic: false
+        font.bold: false
+        font.underline: false
+        style: "Outline"
+        font.pixelSize: 36
+        font.family: "MV Boli"
+        verticalAlignment: "AlignVCenter"
+        horizontalAlignment: "AlignHCenter"
+        opacity: 0
+    }
+
+    Text {
+        id: text3
+        x: 306
+        y: 179
+        color: "#ffe54d"
+        text: qsTr("Art & Design")
+        font.family: "MV Boli"
+        font.pixelSize: 30
+        style: "Sunken"
+        horizontalAlignment: "AlignHCenter"
+        verticalAlignment: "AlignVCenter"
+        opacity: 0
+    }
+
+    Text {
+        id: text4
+        x: 266
+        y: 219
+        color: "#ffe54d"
+        text: qsTr("Olexandra Koval")
+        rotation: 0
+        transformOrigin: "Center"
+        style: "Outline"
+        font.pixelSize: 36
+        font.family: "MV Boli"
+        verticalAlignment: "AlignVCenter"
+        horizontalAlignment: "AlignHCenter"
+        opacity: 0
+    }
+
+    Text {
+        id: text5
+        x: 268
+        y: 301
+        color: "#ffe54d"
+        text: qsTr("Level programming")
+        style: "Sunken"
+        font.pixelSize: 30
+        font.family: "MV Boli"
+        verticalAlignment: "AlignVCenter"
+        horizontalAlignment: "AlignHCenter"
+        opacity: 0
+    }
+
+    Text {
+        id: text6
+        x: 189
+        y: 341
+        color: "#ffe54d"
+        text: qsTr("Anton El-Khoury-Khanna")
+        style: "Outline"
+        font.pixelSize: 36
+        font.family: "MV Boli"
+        verticalAlignment: "AlignVCenter"
+        horizontalAlignment: "AlignHCenter"
+        opacity: 0
+    }
+
+
+    Text {
+        id: text7
+        x: 226
+        y: 421
+        color: "#ffe54d"
+        text: qsTr("Additional Programming")
+        style: "Sunken"
+        font.pixelSize: 30
+        font.family: "MV Boli"
+        horizontalAlignment: "AlignHCenter"
+        verticalAlignment: "AlignVCenter"
+        opacity: 0
+    }
+
+    Text {
+        id: text8
+        x: 279
+        y: 461
+        color: "#ffe54d"
+        text: qsTr("Andriy Manko")
+        style: "Outline"
+        font.pixelSize: 36
+        font.family: "MV Boli"
+        verticalAlignment: "AlignVCenter"
+        horizontalAlignment: "AlignHCenter"
+        opacity: 0
+    }
+
     Image {
         id: image1
+        x: 0
+        y: 0
+        width: 800
+        height: 600
+        anchors.topMargin: 0
         anchors.fill: parent
         source: "graphics/crow.png"
-
-        Text {
-            id: text1
-            x: 246
-            y: 146
-            text: qsTr("text")
-            font.pixelSize: 12
-            opacity: 0
-        }
     }
 
     Text {
@@ -128,14 +246,28 @@ Rectangle {
                               {
                                   about.style = Text.Sunken;
                               }
+            onClicked: if(rectangle1.state != "About screen")
+                       {
+                           rectangle1.state = "About screen";
+                       }
+                       else
+                       {
+                           rectangle1.state = "base state";
+                       }
         }
     }
+
     states: [
         State {
             name: "About screen"
 
             PropertyChanges {
                 target: image1
+                x: 0
+                y: 0
+                width: 800
+                height: 600
+                anchors.topMargin: 0
                 smooth: true
                 clip: false
                 opacity: 0.400
@@ -160,16 +292,63 @@ Rectangle {
             PropertyChanges {
                 target: play
                 text: "Play"
-                opacity: 0.400
+                opacity: 0
             }
 
             PropertyChanges {
                 target: text1
-                width: 288
-                height: 38
-                text: "text"
+                opacity: 1
+            }
+
+            PropertyChanges {
+                target: text2
+                opacity: 1
+            }
+
+            PropertyChanges {
+                target: text3
+                opacity: 1
+            }
+
+            PropertyChanges {
+                target: text4
+                opacity: 1
+            }
+
+            PropertyChanges {
+                target: text5
+                opacity: 1
+            }
+
+            PropertyChanges {
+                target: text6
+                opacity: 1
+            }
+
+            PropertyChanges {
+                target: text7
+                opacity: 1
+            }
+
+            PropertyChanges {
+                target: text8
                 opacity: 1
             }
         }
+    ]
+
+    transitions: [
+        Transition {
+            from: "base state"
+            to: "About screen"
+            PropertyAnimation { target: image1; property: "opacity"; to: 0.4}
+        },
+
+        Transition {
+            from: "About screen"
+            to: "base state"
+            PropertyAnimation { target: image1; property: "opacity"; to: 1.0}
+        }
+
     ]
 }
