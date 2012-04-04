@@ -54,4 +54,5 @@ HEADERS += \
     code/holer.h \
     code/bonus.h
 
-OTHER_FILES +=
+OTHER_FILES += \
+    qml/render.qml

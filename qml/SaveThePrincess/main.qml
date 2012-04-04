@@ -6,6 +6,13 @@ Rectangle {
     id: rectangle1
     width: 800
     height: 600
+    focus: true
+
+    Loader {
+        id: loader
+        anchors.fill: parent
+        visible: false
+    }
 
     Text {
         id: text1
@@ -172,6 +179,13 @@ Rectangle {
                               {
                                   play.style = Text.Sunken;
                               }
+            onClicked:
+            {
+                loader.source = "render.qml";
+                loader.visible = true;
+                loader.focus = true;
+                rectangle1.state = "Game";
+            }
         }
     }
 
@@ -246,20 +260,46 @@ Rectangle {
                               {
                                   about.style = Text.Sunken;
                               }
-            onClicked: if(rectangle1.state != "About screen")
+            onClicked: if(rectangle1.state != "About")
                        {
-                           rectangle1.state = "About screen";
+                           rectangle1.state = "About";
                        }
                        else
                        {
-                           rectangle1.state = "base state";
+                           rectangle1.state = "";
                        }
         }
     }
 
+    MouseArea {
+        id: mouse_area_about_exit
+        enabled: false
+        anchors.fill: parent
+        opacity: 1
+
+        onClicked: rectangle1.state = "";
+    }
+
+    Keys.onPressed:
+    {
+         if (event.key == Qt.Key_Escape)
+         {
+             rectangle1.state = "";
+             event.accepted = true;
+         }
+         else
+         {
+             if(rectangle1.state == "About")
+             {
+                 rectangle1.state = "";
+                 event.accepted = true;
+             }
+         }
+    }
+
     states: [
         State {
-            name: "About screen"
+            name: "About"
 
             PropertyChanges {
                 target: image1
@@ -270,7 +310,7 @@ Rectangle {
                 anchors.topMargin: 0
                 smooth: true
                 clip: false
-                opacity: 0.400
+                opacity: 0.330
             }
 
             PropertyChanges {
@@ -280,7 +320,6 @@ Rectangle {
 
             PropertyChanges {
                 target: mouse_area_play
-                opacity: 1
                 enabled: false
             }
 
@@ -334,20 +373,64 @@ Rectangle {
                 target: text8
                 opacity: 1
             }
+
+            PropertyChanges {
+                target: mouse_area_about_exit
+                enabled: true
+                opacity: 1
+            }
+
+            PropertyChanges {
+                target: about
+                opacity: 0
+            }
+
+            PropertyChanges {
+                target: close
+                opacity: 0
+            }
+        },
+        State {
+            name: "Game"
+
+            PropertyChanges {
+                target: loader
+                item.enabled: true
+            }
+
+            PropertyChanges {
+                target: image1
+                visible: false
+            }
+
+            PropertyChanges {
+                target: play
+                visible: false
+            }
+
+            PropertyChanges {
+                target: close
+                visible: false
+            }
+
+            PropertyChanges {
+                target: about
+                visible: false
+            }
         }
     ]
 
     transitions: [
         Transition {
-            from: "base state"
-            to: "About screen"
-            PropertyAnimation { target: image1; property: "opacity"; to: 0.4}
+            from: ""
+            to: "About"
+            PropertyAnimation { property: "opacity"; duration: 500}
         },
 
         Transition {
-            from: "About screen"
-            to: "base state"
-            PropertyAnimation { target: image1; property: "opacity"; to: 1.0}
+            from: "About"
+            to: ""
+            PropertyAnimation { property: "opacity"; duration: 500}
         }
 
     ]
