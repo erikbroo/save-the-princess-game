@@ -48,9 +48,9 @@ void MainWindow::setUpItemList()
 
     itemsList.append(new LevelItem(i++,QIcon("Grass.png"),QString("Grass")));
     itemsList.append(new LevelItem(i++,QIcon("GrassWall.png"),"Grass wall"));
-    itemsList.append(new LevelItem(i++,QIcon("Water.png"),"Water"));
-    itemsList.append(new LevelItem(i++,QIcon("StoneWall.png"),"Stone wall"));
-    itemsList.append(new LevelItem(i++,QIcon("Board.png"),"Board"));
+//    itemsList.append(new LevelItem(i++,QIcon("Water.png"),"Water"));
+//    itemsList.append(new LevelItem(i++,QIcon("StoneWall.png"),"Stone wall"));
+//    itemsList.append(new LevelItem(i++,QIcon("Board.png"),"Board"));
     itemsList.append(new LevelItem(i++,QIcon("Hero.png"),"Hero"));
     itemsList.append(new LevelItem(i++,QIcon("Princess.png"),"Princess"));
     itemsList.append(new LevelItem(i++,QIcon("Enemy1.png"),"Enemy1"));
