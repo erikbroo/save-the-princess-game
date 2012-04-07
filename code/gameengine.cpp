@@ -1,4 +1,5 @@
 #include "gameengine.h"
+#include "linksToData.h"
 #include <QFile>
 
 GameEngine::GameEngine(QObject *parent) :
@@ -51,7 +52,7 @@ bool GameEngine::loadLevel(QString levelFilename)
 
     //don't uncomment while map is initiated without objects
     //all values are null
-    //labirint.print();
+    labirint.print();
     return true;
 
 }
@@ -97,6 +98,17 @@ GameObject *GameEngine::chooseItemById(int id)
     GameObject* object = 0;
 
     //TODO: init "object" with proper object derived from GameObject due to "id"
+    switch (id)
+    {
+        case 0 : { object = new Grass(id,"Grass"); break; }
+        case 1 : { object = new GrassWall(id,"GrassWall"); break; }
+        case 2 : { object = new Water(id,"Water"); break;}
+        case 3 : { object = new StoneWall(id,"StoneWall"); break; }
+        case 4 : { object = new Board(id,"Board"); break;}
+        case 5 : { object = new Player(id,"Hero"); break;}
+        case 6 : { object = new Princess(id,"Princess"); break;}
+        case 7 : { object = new Foe(id,"Enemy1"); break;}
+    }
 
     return (object);
 }

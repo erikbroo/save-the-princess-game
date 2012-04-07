@@ -4,19 +4,28 @@ Labirint::Labirint()
 {
     this->height = 0;
     this->width = 0;
-
-    //set map of items,roads and walls
-
-    //set map of actions
 }
 
 void Labirint::setObject(int row, int column, GameObject* object)
 {
-    map.insert(new QPoint(column,row),object);
+    map.append(new MapItem(column,row,object));
 }
 
 void Labirint::setDimension(int height, int width)
 {
     this->height = height;
-    this->width = width;    
+    this->width = width;
+}
+
+GameObject *Labirint::getItemFromPosition(int row, int column)
+{
+    foreach(MapItem* item, map)
+    {
+        if (item->row == row && item->column == column)
+        {
+            return item->object;
+        }
+    }
+
+    return 0;
 }
