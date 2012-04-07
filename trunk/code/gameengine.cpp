@@ -44,14 +44,15 @@ bool GameEngine::loadLevel(QString levelFilename)
             {
                 int id = numberVector.at(j);
 
-                labirint.setObject(i,j,id);
+                labirint.setObject(i,j,chooseItemById(id));
             }
-
         }
     }
 
-    labirint.print();
-
+    //don't uncomment while map is initiated without objects
+    //all values are null
+    //labirint.print();
+    return true;
 
 }
 
@@ -89,4 +90,13 @@ QVector<int> GameEngine::extractNumber(QByteArray line)
         }
     }
     return numbers;
+}
+
+GameObject *GameEngine::chooseItemById(int id)
+{
+    GameObject* object = 0;
+
+    //TODO: init "object" with proper object derived from GameObject due to "id"
+
+    return (object);
 }
