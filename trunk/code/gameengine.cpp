@@ -1,5 +1,5 @@
 #include "gameengine.h"
-#include "linksToData.h"
+#include "objects_include.h"
 #include <QFile>
 
 GameEngine::GameEngine(QObject *parent) :
@@ -63,9 +63,6 @@ void GameEngine::initObjectsList()
 
     objectsList.insert(i++,"Grass");
     objectsList.insert(i++,"Grass wall");
-    objectsList.insert(i++,"Water");
-    objectsList.insert(i++,"Stone wall");
-    objectsList.insert(i++,"Board");
     objectsList.insert(i++,"Hero");
     objectsList.insert(i++,"Princess");
     objectsList.insert(i++,"Enemy1");
@@ -97,17 +94,13 @@ GameObject *GameEngine::chooseItemById(int id)
 {
     GameObject* object = 0;
 
-    //TODO: init "object" with proper object derived from GameObject due to "id"
     switch (id)
     {
-        case 0 : { object = new Grass(id,"Grass"); break; }
+        //case 0 : { object = new Grass(id,"Grass"); break; }
         case 1 : { object = new GrassWall(id,"GrassWall"); break; }
-        case 2 : { object = new Water(id,"Water"); break;}
-        case 3 : { object = new StoneWall(id,"StoneWall"); break; }
-        case 4 : { object = new Board(id,"Board"); break;}
-        case 5 : { object = new Player(id,"Hero"); break;}
-        case 6 : { object = new Princess(id,"Princess"); break;}
-        case 7 : { object = new Foe(id,"Enemy1"); break;}
+        case 2 : { object = new Player(id,"Hero"); break;}
+        case 3 : { object = new Princess(id,"Princess"); break;}
+        case 4 : { object = new Foe(id,"Enemy1"); break;}
     }
 
     return (object);

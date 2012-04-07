@@ -32,6 +32,7 @@ public:
                   for(int j = 0; j < width; j++){
                       GameObject* id = getItemFromPosition(i,j);
                       if (id) std::cout<<  id->getId() << " ";
+                      else std::cout<< "0 ";
                   }
                   std::cout<<std::endl;
              }
