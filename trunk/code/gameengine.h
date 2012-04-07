@@ -2,6 +2,7 @@
 #define GAMEENGINE_H
 
 #include <QObject>
+#include <QMap>
 #include <QVector>
 #include "labirint.h"
 
