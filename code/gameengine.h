@@ -24,6 +24,7 @@ private:
 
     void initObjectsList();
     QVector<int> extractNumber(QByteArray line);
+    GameObject* chooseItemById(int id);
 };
 
 #endif // GAMEENGINE_H

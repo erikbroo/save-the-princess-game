@@ -10,19 +10,13 @@ Labirint::Labirint()
     //set map of actions
 }
 
-void Labirint::setObject(int row, int column, int id)
+void Labirint::setObject(int row, int column, GameObject* object)
 {
-    map[row][column] = id;
+    map.insert(new QPoint(column,row),object);
 }
 
 void Labirint::setDimension(int height, int width)
 {
     this->height = height;
-    this->width = width;
-
-    //init map
-    map = new int*[height];
-    for(int i = 0; i < height; i++) {
-        map[i] = new int[width];
-    }
+    this->width = width;    
 }
