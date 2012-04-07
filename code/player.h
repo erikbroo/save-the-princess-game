@@ -9,6 +9,9 @@ class Player : public GameObject
     Q_OBJECT
 public:
     explicit Player(QObject *parent = 0);
+    Player(int id, QString name);
+
+    void performAction();
     
 signals:
     

@@ -9,6 +9,8 @@ class Foe : public GameObject
     Q_OBJECT
 public:
     explicit Foe(QObject *parent = 0);
+    Foe(int id, QString name);
+    void performAction();
     
 signals:
     

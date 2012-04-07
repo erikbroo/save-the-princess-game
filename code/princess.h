@@ -9,6 +9,8 @@ class Princess : public GameObject
     Q_OBJECT
 public:
     explicit Princess(QObject *parent = 0);
+    Princess(int id, QString name);
+    void performAction();
     
 signals:
     
