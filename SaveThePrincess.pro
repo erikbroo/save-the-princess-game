@@ -34,11 +34,10 @@ SOURCES += main.cpp \
     code/gameengine.cpp \
     code/gameobject.cpp \
     code/player.cpp \
-    code/wall.cpp \
     code/princess.cpp \
     code/foe.cpp \
-    code/holer.cpp \
-    code/bonus.cpp
+    code/grasswall.cpp \
+    code/labyrinth.cpp
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
@@ -48,11 +47,10 @@ HEADERS += \
     code/gameengine.h \
     code/gameobject.h \
     code/player.h \
-    code/wall.h \
     code/princess.h \
     code/foe.h \
-    code/holer.h \
-    code/bonus.h
+    code/grasswall.h \
+    code/labyrinth.h
 
 OTHER_FILES += \
     qml/render.qml

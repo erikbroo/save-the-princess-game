@@ -4,7 +4,11 @@
 #include <QObject>
 #include <QMap>
 #include <QVector>
-#include "labirint.h"
+#include "labyrinth.h"
+#include "grasswall.h"
+#include "foe.h"
+#include "player.h"
+#include "princess.h"
 
 class GameEngine : public QObject
 {

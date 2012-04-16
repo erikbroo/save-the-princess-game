@@ -1,4 +1,4 @@
-#include "labirint.h"
+#include "labyrinth.h"
 
 Labirint::Labirint()
 {
