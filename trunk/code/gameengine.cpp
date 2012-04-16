@@ -1,5 +1,4 @@
 #include "gameengine.h"
-#include "objects_include.h"
 #include <QFile>
 
 GameEngine::GameEngine(QObject *parent) :
@@ -49,12 +48,12 @@ bool GameEngine::loadLevel(QString levelFilename)
             }
         }
     }
-
+#ifdef PRINT_TEST
     //don't uncomment while map is initiated without objects
     //all values are null
     labirint.print();
+#endif
     return true;
-
 }
 
 void GameEngine::initObjectsList()

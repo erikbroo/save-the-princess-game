@@ -8,7 +8,6 @@ class GameObject : public QObject
     Q_OBJECT
 public:
     explicit GameObject(QObject *parent = 0);
-    GameObject();
     GameObject(int id, QString name) : objectId(id), objectName(name){}
 
     int getId() { return objectId; }

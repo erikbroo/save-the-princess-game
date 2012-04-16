@@ -25,7 +25,7 @@ public:
     int getWidth() { return width; }
     GameObject* getItemFromPosition(int row, int column);
 
-    //for test
+#ifdef PRINT_TEST
         void print(){
              for(int i = 0; i < height; i++)
              {
@@ -37,6 +37,7 @@ public:
                   std::cout<<std::endl;
              }
         }
+#endif
 
 private:
     QVector<MapItem*> map;
