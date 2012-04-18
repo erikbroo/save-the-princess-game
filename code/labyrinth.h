@@ -15,10 +15,10 @@ struct MapItem
         row(y), column(x), object(o){}
 };
 
-class Labirint
+class Labyrinth
 {
 public:
-    Labirint();
+    Labyrinth();
     void setObject(int row, int column,GameObject *object);
     void setDimension(int height, int width);
     int getHeight() { return height; }

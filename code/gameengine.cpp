@@ -24,14 +24,14 @@ bool GameEngine::loadLevel(QString levelFilename)
     {
         buffer = level.readLine();
         numberVector = extractNumber(buffer);
-        labirint.setDimension(numberVector.at(0),numberVector.at(1));
+        labyrinth.setDimension(numberVector.at(0),numberVector.at(1));
 
     } else {
         return false;
     }
 
     //read items in rows
-    for(int i = 0; i < labirint.getHeight(); i++)
+    for(int i = 0; i < labyrinth.getHeight(); i++)
     {
         numberVector.clear();
         if (!level.atEnd())
@@ -44,7 +44,7 @@ bool GameEngine::loadLevel(QString levelFilename)
             {
                 int id = numberVector.at(j);
 
-                labirint.setObject(i,j,chooseItemById(id));
+                labyrinth.setObject(i,j,chooseItemById(id));
             }
         }
     }
@@ -103,4 +103,14 @@ GameObject *GameEngine::chooseItemById(int id)
     }
 
     return (object);
+}
+
+void GameEngine::startEngine()
+{
+    qDebug("Engine start");
+}
+
+void GameEngine::stopEngine()
+{
+    qDebug("Engine stop");
 }
