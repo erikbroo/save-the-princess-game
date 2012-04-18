@@ -11,7 +11,7 @@ Rectangle {
     Loader {
         id: loader
         anchors.fill: parent
-        visible: false
+        //visible: false
     }
 
     Text {
@@ -284,6 +284,7 @@ Rectangle {
     {
          if (event.key == Qt.Key_Escape)
          {
+             loader.visible = false;
              rectangle1.state = "";
              event.accepted = true;
          }

@@ -1,9 +1,13 @@
 #include <QtGui/QApplication>
+#include <QtDeclarative>
 #include "qmlapplicationviewer.h"
+#include "code/gameengine.h"
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QScopedPointer<QApplication> app(createApplication(argc, argv));
+
+    qmlRegisterType<GameEngine>("Engine",1,0,"GameEngine");
 
     QmlApplicationViewer viewer;
 

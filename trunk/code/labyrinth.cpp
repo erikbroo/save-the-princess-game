@@ -1,23 +1,23 @@
 #include "labyrinth.h"
 
-Labirint::Labirint()
+Labyrinth::Labyrinth()
 {
     this->height = 0;
     this->width = 0;
 }
 
-void Labirint::setObject(int row, int column, GameObject* object)
+void Labyrinth::setObject(int row, int column, GameObject* object)
 {
     map.append(new MapItem(column,row,object));
 }
 
-void Labirint::setDimension(int height, int width)
+void Labyrinth::setDimension(int height, int width)
 {
     this->height = height;
     this->width = width;
 }
 
-GameObject *Labirint::getItemFromPosition(int row, int column)
+GameObject *Labyrinth::getItemFromPosition(int row, int column)
 {
     foreach(MapItem* item, map)
     {
