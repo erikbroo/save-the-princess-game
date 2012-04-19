@@ -1,5 +1,6 @@
 #include <QtGui/QApplication>
 #include <QtDeclarative>
+#include <QVector>
 #include "qmlapplicationviewer.h"
 #include "code/gameengine.h"
 

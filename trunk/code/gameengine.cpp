@@ -1,5 +1,4 @@
 #include "gameengine.h"
-#include <QFile>
 
 GameEngine::GameEngine(QObject *parent) :
     QObject(parent)
@@ -107,10 +106,20 @@ GameObject *GameEngine::chooseItemById(int id)
 
 void GameEngine::startEngine()
 {
-    qDebug("Engine start");
+    qDebug("Engine started");
+
+    if(loadLevel("data/level01.spg"))
+    {
+        qDebug("Level loaded");
+        emit render(labyrinth.convertToQVariantForm());
+    }
+    else
+    {
+        qDebug("Level loading failed");
+    }
 }
 
 void GameEngine::stopEngine()
 {
-    qDebug("Engine stop");
+    qDebug("Engine stopped");
 }

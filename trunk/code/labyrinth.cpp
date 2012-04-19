@@ -6,6 +6,20 @@ Labyrinth::Labyrinth()
     this->width = 0;
 }
 
+Labyrinth::~Labyrinth()
+{
+    int len = map.size();
+
+    for(int i = 0; i < len; ++i)
+    {
+        MapItem* item = map[0];
+
+        delete item;
+
+        map.remove(0);
+    }
+}
+
 void Labyrinth::setObject(int row, int column, GameObject* object)
 {
     map.append(new MapItem(column,row,object));
@@ -28,4 +42,28 @@ GameObject *Labyrinth::getItemFromPosition(int row, int column)
     }
 
     return 0;
+}
+
+QVariantList Labyrinth::convertToQVariantForm()
+{
+    QVariantList result;
+
+    for(int i = 0; i < this->getHeight(); ++i)
+    {
+        for(int j = 0; j < this->getWidth(); ++j)
+        {
+            GameObject* obj = this->getItemFromPosition(i,j);
+
+            if(obj)
+            {
+                result.append(obj->getId());
+            }
+            else
+            {
+                result.append(0);
+            }
+        }
+    }
+
+    return result;
 }

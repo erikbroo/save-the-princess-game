@@ -3,7 +3,8 @@
 
 #include <QObject>
 #include <QMap>
-#include <QVector>
+#include <QVariant>
+#include <QFile>
 #include "labyrinth.h"
 #include "grasswall.h"
 #include "foe.h"
@@ -17,6 +18,7 @@ public:
     explicit GameEngine(QObject *parent = 0);
     
 signals:
+    void render(QVariantList lab);
     
 public slots:
     void startEngine();

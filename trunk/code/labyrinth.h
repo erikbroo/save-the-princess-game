@@ -2,7 +2,9 @@
 #define LABIRINT_H
 
 #include <QPoint>
+#include <QObject>
 #include <QVector>
+#include <QVariant>
 #include "gameobject.h"
 #include <iostream>
 
@@ -13,17 +15,25 @@ struct MapItem
     GameObject* object;
     MapItem(int x, int y, GameObject* o) :
         row(y), column(x), object(o){}
+    ~MapItem()
+    {
+        delete object;
+    }
 };
 
 class Labyrinth
 {
 public:
     Labyrinth();
-    void setObject(int row, int column,GameObject *object);
+    ~Labyrinth();
+
+    void setObject(int row, int column, GameObject *object);
     void setDimension(int height, int width);
     int getHeight() { return height; }
     int getWidth() { return width; }
     GameObject* getItemFromPosition(int row, int column);
+
+    QVariantList convertToQVariantForm();
 
 #ifdef PRINT_TEST
         void print(){
