@@ -54,3 +54,4 @@ HEADERS += \
 
 OTHER_FILES += \
     qml/render.qml
+    qml/level_block.qml
