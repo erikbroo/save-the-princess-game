@@ -23,6 +23,7 @@ signals:
 public slots:
     void startEngine();
     void stopEngine();
+    void keyPressed(int key);
 
 private:
     Labyrinth labyrinth;
