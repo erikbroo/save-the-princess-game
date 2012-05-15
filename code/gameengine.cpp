@@ -123,3 +123,8 @@ void GameEngine::stopEngine()
 {
     qDebug("Engine stopped");
 }
+
+void GameEngine::keyPressed(int key)
+{
+    qDebug(QString("%1").arg(key,0,16,0).toAscii());
+}
