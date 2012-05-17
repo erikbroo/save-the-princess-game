@@ -43,7 +43,7 @@ bool GameEngine::loadLevel(QString levelFilename)
             {
                 int id = numberVector.at(j);
 
-                labyrinth.setObject(i,j,chooseItemById(id));
+                labyrinth.setItem(i,j,chooseItemById(id));
             }
         }
     }
@@ -52,6 +52,29 @@ bool GameEngine::loadLevel(QString levelFilename)
     //all values are null
     labirint.print();
 #endif
+    return true;
+}
+
+bool GameEngine::validateMove(int old_x, int old_y, int new_x, int new_y)
+{
+    GameObject* character = labyrinth.getItem(old_x,old_y);
+    GameObject* new_tile = labyrinth.getItem(new_x,new_y);
+
+    switch(new_tile->getId())
+    {
+    case 0:
+
+        break;
+    case 1:
+        break;
+    case 2:
+        break;
+    case 3:
+        break;
+    case 4:
+        break;
+    }
+
     return true;
 }
 
