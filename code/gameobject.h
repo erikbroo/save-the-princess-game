@@ -11,6 +11,9 @@ public:
     GameObject(int id, QString name) : objectId(id), objectName(name){}
 
     int getId() { return objectId; }
+    int getX() { return x; }
+    int getY() { return y; }
+    void setCoords(int _x, int _y) { x = _x; y = _y; }
     virtual void performAction() = 0;
     
 signals:
@@ -19,6 +22,8 @@ public slots:
 
 private:
     int objectId;
+    int x;
+    int y;
     QString objectName;
     
 };
