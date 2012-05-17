@@ -4,44 +4,68 @@ Labyrinth::Labyrinth()
 {
     this->height = 0;
     this->width = 0;
+    this->labyrinth = 0;
 }
 
 Labyrinth::~Labyrinth()
 {
-    int len = map.size();
-
-    for(int i = 0; i < len; ++i)
+    if(this->height != 0 && this->width != 0)
     {
-        MapItem* item = map[0];
+        for(int i = 0; i < this->height; ++i)
+        {
+            for(int j = 0; j < this->width; ++j)
+            {
+                delete labyrinth[i][j];
+            }
 
-        delete item;
+            delete labyrinth[i];
+        }
 
-        map.remove(0);
+        delete labyrinth;
     }
 }
 
-void Labyrinth::setObject(int row, int column, GameObject* object)
+void Labyrinth::setItem(int row, int column, GameObject* object)
 {
-    map.append(new MapItem(column,row,object));
+    labyrinth[row][column] = object;
 }
 
 void Labyrinth::setDimension(int height, int width)
 {
-    this->height = height;
-    this->width = width;
-}
-
-GameObject *Labyrinth::getItemFromPosition(int row, int column)
-{
-    foreach(MapItem* item, map)
+    if(this->height != 0 && this->width != 0) //if resizing an already used labyrinth
     {
-        if (item->row == row && item->column == column)
+        for(int i = 0; i < this->height; ++i)
         {
-            return item->object;
+            for(int j = 0; j < this->width; ++j)
+            {
+                delete labyrinth[i][j];
+            }
+
+            delete labyrinth[i];
         }
+
+        delete labyrinth;
     }
 
-    return 0;
+    this->height = height;
+    this->width = width;
+
+    labyrinth = new GameObject**[height];
+
+    for(int i = 0; i < height; ++i)
+    {
+        labyrinth[i] = new GameObject*[width];
+
+        for(int j = 0; j < width; ++j)
+        {
+            labyrinth[i][j] = 0;
+        }
+    }
+}
+
+GameObject *Labyrinth::getItem(int row, int column)
+{
+    return labyrinth[row][column];
 }
 
 QVariantList Labyrinth::convertToQVariantForm()
@@ -52,7 +76,7 @@ QVariantList Labyrinth::convertToQVariantForm()
     {
         for(int j = 0; j < this->getWidth(); ++j)
         {
-            GameObject* obj = this->getItemFromPosition(i,j);
+            GameObject* obj = this->getItem(i,j);
 
             if(obj)
             {

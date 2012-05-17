@@ -27,11 +27,11 @@ public:
     Labyrinth();
     ~Labyrinth();
 
-    void setObject(int row, int column, GameObject *object);
+    void setItem(int row, int column, GameObject *object);
+    GameObject* getItem(int row, int column);
     void setDimension(int height, int width);
     int getHeight() { return height; }
     int getWidth() { return width; }
-    GameObject* getItemFromPosition(int row, int column);
 
     QVariantList convertToQVariantForm();
 
@@ -51,6 +51,7 @@ public:
 
 private:
     QVector<MapItem*> map;
+    GameObject*** labyrinth;
     int height;
     int width;
 };
