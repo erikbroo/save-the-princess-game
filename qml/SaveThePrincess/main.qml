@@ -11,6 +11,7 @@ Rectangle {
     Loader {
         id: loader
         anchors.fill: parent
+        source: "render.qml";
         //visible: false
     }
 
@@ -181,7 +182,6 @@ Rectangle {
                               }
             onClicked:
             {
-                loader.source = "render.qml";
                 loader.visible = true;
                 loader.focus = true;
                 rectangle1.state = "Game";
@@ -296,6 +296,18 @@ Rectangle {
                  event.accepted = true;
              }
          }
+    }
+
+    Connections
+    {
+        target: loader.item;
+        ignoreUnknownSignals: true;
+
+        onCloseMe:
+        {
+            loader.visible = false;
+            rectangle1.state = "";
+        }
     }
 
     states: [
