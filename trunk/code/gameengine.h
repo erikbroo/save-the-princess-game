@@ -30,6 +30,7 @@ public slots:
 
 private:
     Labyrinth labyrinth;
+    GameObject* player;
 
     //list to identify objects using their id's
     QMap<int,QString> objectsList;
@@ -38,7 +39,7 @@ private:
     QVector<int>    extractNumber(QByteArray line);
     GameObject*     chooseItemById(int id);
     bool            loadLevel(QString levelFilename);
-    bool            validateMove(int old_x, int old_y, int new_x, int new_y);
+    bool            makeMove(int old_x, int old_y, int new_x, int new_y);
 };
 
 #endif // GAMEENGINE_H
