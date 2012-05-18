@@ -44,26 +44,29 @@ Rectangle {
 
                         if(lab[j*16+i] == 0)
                         {
-                            obj.color = "lime";
+                            obj.type = 0;
                         }
                         else if(lab[j*16+i] == 1)
                         {
-                            obj.color = "darkgreen";
+                            obj.type = 1;
                         }
                         else if(lab[j*16+i] == 2)
                         {
-                            obj.color = "red";
+                            obj.type = 2;
                         }
                         else if(lab[j*16+i] == 3)
                         {
+                            obj.type = 3;
                             obj.color = "pink";
                         }
                         else if(lab[j*16+i] == 4)
                         {
+                            obj.type = 4;
                             obj.color = "black";
                         }
                         else
                         {
+                            obj.type = -1;
                             obj.color = "yellow";
                         }
 
